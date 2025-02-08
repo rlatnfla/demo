@@ -1,6 +1,5 @@
-package main.gov_map.Scrapping.Scraper;
+package main.gov_map.Scraping.Scraper;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
