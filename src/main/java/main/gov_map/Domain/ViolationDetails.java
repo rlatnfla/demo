@@ -2,7 +2,7 @@ package main.gov_map.Domain;
 
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
-import main.gov_map.Scrapping.Dto.ViolationInfo;
+import main.gov_map.Scraping.Dto.ViolationInfo;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -13,40 +13,43 @@ import java.time.format.DateTimeParseException;
 @NoArgsConstructor
 public class ViolationDetails {
 
-    @Id
-    @GeneratedValue
-    private Long id;
+    @EmbeddedId
+    private ViolationDetailsId id;
 
     @ManyToOne
+    @MapsId("licenseNum")
     @JoinColumn(name = "shop_id")
     private Shop shop;
 
-    @Column(nullable = false)
-    private LocalDate violationDate;
-
-    @Column(length = 500)
-    private String violationDetails;
     private String legalBasis;
     private String violationReason;
     private String violationLocation;
 
     //==생성자==//
-    private ViolationDetails(ViolationInfo violationInfo) {
-        this.violationDate = parseDate(violationInfo.getViolationDate());
-        this.violationDetails = violationInfo.getViolationDetails();
+    private ViolationDetails(ViolationInfo violationInfo, Long licenseNum) {
+        this.id = new ViolationDetailsId(licenseNum, parseDate(violationInfo.getViolationDate()), violationInfo.getViolationDetails());
         this.legalBasis = violationInfo.getLegalBasis();
         this.violationReason = violationInfo.getViolationReason();
         this.violationLocation = violationInfo.getViolationLocation();
     }
 
     //==생성 메서드==//
-    public static ViolationDetails createViolationDetails(ViolationInfo violationInfo) {
-        return new ViolationDetails(violationInfo);
+    public static ViolationDetails createViolationDetails(ViolationInfo violationInfo, Long licenseNum) {
+        return new ViolationDetails(violationInfo, licenseNum);
     }
 
     //==연관관계 메서드==//
     public void setShop(Shop shop) {
         this.shop = shop;
+    }
+
+    //==getter 메서드==//
+    public LocalDate getViolationDate(){
+        return id.getViolationDate();
+    }
+
+    public String getViolationDetails(){
+        return id.getViolationDetails();
     }
 
     //==팩토리 메서드==//
