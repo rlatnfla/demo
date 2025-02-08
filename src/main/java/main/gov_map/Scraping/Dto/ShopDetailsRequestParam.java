@@ -1,4 +1,4 @@
-package main.gov_map.Scrapping.Dto;
+package main.gov_map.Scraping.Dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

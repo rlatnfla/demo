@@ -1,8 +1,8 @@
-package main.gov_map.Scrapping.Scraper;
+package main.gov_map.Scraping.Scraper;
 
 import lombok.RequiredArgsConstructor;
-import main.gov_map.Scrapping.Dto.ShopDetailsRequestParam;
-import main.gov_map.Scrapping.Parser.ShopTableParser;
+import main.gov_map.Scraping.Dto.ShopDetailsRequestParam;
+import main.gov_map.Scraping.Parser.ShopTableParser;
 import org.springframework.stereotype.Component;
 
 import java.net.URI;

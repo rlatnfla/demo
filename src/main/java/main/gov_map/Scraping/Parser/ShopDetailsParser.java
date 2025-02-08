@@ -1,10 +1,10 @@
-package main.gov_map.Scrapping.Parser;
+package main.gov_map.Scraping.Parser;
 
 import lombok.extern.slf4j.Slf4j;
-import main.gov_map.Scrapping.Dto.AdmActionHandlerInfo;
-import main.gov_map.Scrapping.Dto.AdmActionInfo;
-import main.gov_map.Scrapping.Dto.ShopDetails;
-import main.gov_map.Scrapping.Dto.ViolationInfo;
+import main.gov_map.Scraping.Dto.AdmActionHandlerInfo;
+import main.gov_map.Scraping.Dto.AdmActionInfo;
+import main.gov_map.Scraping.Dto.ShopDetails;
+import main.gov_map.Scraping.Dto.ViolationInfo;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -12,7 +12,6 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

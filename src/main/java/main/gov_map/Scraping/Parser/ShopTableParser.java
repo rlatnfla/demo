@@ -1,6 +1,6 @@
-package main.gov_map.Scrapping.Parser;
+package main.gov_map.Scraping.Parser;
 
-import main.gov_map.Scrapping.Dto.ShopDetailsRequestParam;
+import main.gov_map.Scraping.Dto.ShopDetailsRequestParam;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
