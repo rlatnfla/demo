@@ -3,12 +3,10 @@ package main.gov_map.Domain;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import main.gov_map.Scrapping.Dto.AdmActionHandlerInfo;
-import main.gov_map.Scrapping.Dto.AdmActionInfo;
-import main.gov_map.Scrapping.Dto.ViolationInfo;
+import main.gov_map.Scraping.Dto.AdmActionHandlerInfo;
+import main.gov_map.Scraping.Dto.AdmActionInfo;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -22,7 +20,7 @@ public class Shop {
 
     // 행정처분 정보
     @Id
-    private String licenseNum;      // 인허가 번호
+    private Long licenseNum;      // 인허가 번호
 
     @Column(nullable = false)
     private String admActionNum;    // 행정 처분 번호
@@ -65,7 +63,7 @@ public class Shop {
 
     //==생성자==//
     private Shop(AdmActionInfo admActionInfo, AdmActionHandlerInfo admActionHandlerInfo) {
-        this.licenseNum = admActionInfo.getLicenseNum();
+        this.licenseNum = Long.parseLong(admActionInfo.getLicenseNum());
         this.admActionNum = admActionInfo.getAdmActionNum();
         this.businessType = admActionInfo.getBusinessType();
         this.shopName = admActionInfo.getShopName();
